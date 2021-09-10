@@ -1,5 +1,5 @@
-# CyberArk Conjur Secrets Manager AWS EKS Integration Lab 2021
-This is a tutorial share to you on how to secure secrets of AWS EKS applications by CyberArk Secrets Manager Conjur. We will cover deploying Conjur Master, Conjur follower instances with follower seed fetcher. Conjur Secretless Broker & init container will also be covered in this tutorial.
+# CyberArk Conjur Secrets Manager Azure AKS Integration Lab 2021
+This is a tutorial share to you on how to secure secrets of Azure AKS applications by CyberArk Secrets Manager Conjur. We will cover deploying Conjur Master, Conjur follower instances with follower seed fetcher. Conjur Secretless Broker & init container will also be covered in this tutorial.
 For more detail about CyberArk Conjur Secrets Manager, please visit the two websites
 
 - [CyberArk Conjur Secrets Manager Enterprise](https://www.cyberark.com/products/secrets-manager-enterprise/)
@@ -7,21 +7,19 @@ For more detail about CyberArk Conjur Secrets Manager, please visit the two webs
 
 ## Lab Guide Version
 - Version 1.0
-- Release Date 10 March 2021
+- Release Date 10 October 2021
 
 ## Prerequisite
-- You passed CyberArk CDE or CPE Conjur Pro2
-- You completed CyberArk Conjur Fundamentals Course
 - You have basic understanding Linux installation and administration
 - You have basic understanding Docker
 - You have basic understanding MySQL Administration
-- You have basic understanding AWS configuration and administration
-  - For setup the lab, you better knew how to config EC2, VPC, AWS Route 53, Security Group and Amazon ECR 
-- You have basic understanding AWS EKS Kubernetes setup and administration
+- You have basic understanding Azure configuration and administration
+  - For setup the lab, you better knew how to config Azure VM, VNet, AKS, Security Group and Azure ACR
+- You have basic understanding Azure AKS Kubernetes setup and administration
 
 ## Lab Architecture
-- EKS is used as platform to host the [demo app](https://github.com/jeepapichet/cityapp). The application will connect to a MySQL database to retreive data, and during authenication, [secrets](https://docs.cyberark.com/Product-Doc/OnlineHelp/AAM-DAP/Latest/en/Content/Get%20Started/key_concepts/secrets.html) will be used by the application
-- The lab was based on Conjur Version 12.0.0
+- AKS is used as platform to host the [demo app](https://github.com/jeepapichet/cityapp). The application will connect to a MySQL database to retreive data, and during authenication, [secrets](https://docs.cyberark.com/Product-Doc/OnlineHelp/AAM-DAP/Latest/en/Content/Get%20Started/key_concepts/secrets.html) will be used by the application
+- The lab was based on Conjur Version 12.2.0
 
 ![Architecture](https://github.com/ivanckleecity/CyberArk-DAP-EKS-Lap-2021/blob/main/images/architecture_eks.JPG)
 
