@@ -52,9 +52,10 @@ Add tags as desired for your new resource group
 ![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-virtual-machine-Networking.png)
 
 3.4. Create a virtual Machine - Create
-Leave Management and Advanced as default or customize as desired.
-Add tags as desired for your new VM.
-Review the configurations and create the Azure VM.
+
+- Leave Management and Advanced as default or customize as desired.
+- Add tags as desired for your new VM.
+- Review the configurations and create the Azure VM.
 
 3.5. Verify access to the Azure VM
 
