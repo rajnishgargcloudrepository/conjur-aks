@@ -29,7 +29,7 @@ For more detail about CyberArk Conjur Secrets Manager, please visit the two webs
 - Task 5 to 8 is to setup CyberArk Conjur Secrets Manager to protect containerized applications and DevOps tools secure access to resources. The lab will show case how to setup and use CyberArk Summon and Secretless Broker 
 
 
-### [Task 0: Setup Jump Host](00-Setup_Jump_Host.md)
+### [Task 0: Setup Utilities Host](00-Setup_Utilities_Host.md)
 
 ### [Task 1: Install Necessary Software in Jump Host](01-Install_Necessary_Software.md)
 
