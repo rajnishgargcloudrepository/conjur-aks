@@ -36,10 +36,10 @@ Run the MySQL container with below options:
 - -e MYSQL_USER=cityapp # creates a user named cityapp
 - -e MYSQL_PASSWORD=Cyberark1 # set the password of the user to Cyberark1
 - -p "3306:3306" # expose the MySQL port on the Docker host
-- -d mysql:latest # specify the container image with tag "latest"
+- -d mysql:5.7.35 # specify the container image with tag "5.7.35"
 
 ```console
-docker run --name mysqldb -v /home/azureuser/world-db:/docker-entrypoint-initdb.d -e MYSQL_ROOT_PASSWORD=Cyberark1 -e MYSQL_DATABASE=world -e MYSQL_USER=cityapp -e MYSQL_PASSWORD=Cyberark1 -p "3306:3306" -d mysql:latest
+docker run --name mysqldb -v /home/azureuser/world-db:/docker-entrypoint-initdb.d -e MYSQL_ROOT_PASSWORD=Cyberark1 -e MYSQL_DATABASE=world -e MYSQL_USER=cityapp -e MYSQL_PASSWORD=Cyberark1 -p "3306:3306" -d mysql:5.7.35
 ```
 
 3.0 Check if your mysql contrainer running correctly
@@ -51,7 +51,7 @@ docker ps
 Sample output:
 ```console
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                                  NAMES
-32361ae8dbfe   mysql:latest   "docker-entrypoint.s…"   12 seconds ago   Up 10 seconds   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp   mysqldb
+32361ae8dbfe   mysql:5.7.35   "docker-entrypoint.s…"   12 seconds ago   Up 10 seconds   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp   mysqldb
 ```
 
 4.0 Verify that the MySQL database is running
