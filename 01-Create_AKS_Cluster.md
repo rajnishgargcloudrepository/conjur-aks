@@ -9,7 +9,7 @@ We will provision an AKS cluster that will run the following workloads:
 2.0. Create the Kubernetes Cluster
 
 2.1. Settings - Basics
-- Select the resource group created in task 00
+- Select the resource group created in task 0
 - Provide a name for your Kubernetes cluster
 - Customize other settings as desired
 ![image](images/01-Create-Kubernetes-cluster-Basics.png)
@@ -34,7 +34,7 @@ Review the settings and create the Kubernetes cluster.
 
 # Connect to the AKS Cluster
 
-1.0. Login to the utilities host created in task 00
+1.0. Login to the utilities host created in task 0
 
 2.0. Install Azure CLI
 
