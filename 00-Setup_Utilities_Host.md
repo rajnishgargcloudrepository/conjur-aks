@@ -3,6 +3,7 @@ An Azure VM is required as an utilities host serving the following functions:
 - Jump host to access the AKS environment
 - Docker host for Conjur Master container
 - Docker host for MySQL database container
+We will also configure the Private DNS zone for name resolution here
 
 # Provision Utilities Host
 1.0. Login to your Azure Portal (https://portal.azure.com)
@@ -12,17 +13,17 @@ An Azure VM is required as an utilities host serving the following functions:
 2.1. Create Azure Resource Group
 
 Provide a name for your new resource group
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-resource-group.png)
+![image](images/00-Create-a-resource-group.png)
 
 Add tags as desired for your new resource group
 
 2.2. Create Azure Virtual Network
 
 Provide a name for your new virtual network and associate it with the resource group created in 2.1
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-virtual-network-Basics.png)
+![image](images/00-Create-virtual-network-Basics.png)
 
 Configure IP address space and subnet for the virtual network
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-virtual-network-IP-Addresses.png)
+![image](images/00-Create-virtual-network-IP-Addresses.png)
 
 Leave security as default or customize as desired.
 
@@ -36,20 +37,20 @@ Add tags as desired for your new resource group
 - Size: Standard_D2s_v3 (This size is meant for lab or development test, if using for production, do refering to CyberArk sizing guide.)
 **WARNING** The Azure VM will incur costs in your Azure subscription.
 - Administrator account: You can customize to use password or SSH key authentication, choose a username, and choose to generate new or use an existing key pair as desired.
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-virtual-machine-Basics.png)
+![image](images/00-Create-a-virtual-machine-Basics.png)
 
 3.2. Create a virtual Machine - Disks
 - Disk options: Select the disk and encryption type as desired
 - Data disks: We do not need additional data disks
 - Advanced: Use managed disks to enable data persistence
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-virtual-machine-Disks.png)
+![image](images/00-Create-a-virtual-machine-Disks.png)
 
 3.3. Create a virtual Machine - Networking
 - Virtual network: Select the VNet created in 2.2
 - Subnet: Select the subnet created in 2.2
 - Public IP: Allow the wizard to create a new public IP, or use your existing public IP, as desired
 - Public inbound ports: For lab testing purposes of this guide, we will allow access to our VM on SSH. Do follow your organization's access policy accordingly in providing access to cloud instances.
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-virtual-machine-Networking.png)
+![image](images/00-Create-a-virtual-machine-Networking.png)
 
 3.4. Create a virtual Machine - Create
 
@@ -59,9 +60,9 @@ Add tags as desired for your new resource group
 
 3.5. Verify access to the Azure VM
 
-![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-virtual-machine-PuTTY.png)
+![image](images/00-Create-a-virtual-machine-PuTTY.png)
 
-# Setup Docker CE on Utilities Host
+# Setup Docker on Utilities Host
 The utilities host will be used to run the Conjur and MySQL containers.
 
 1.0. Install docker on the utilities host
@@ -101,3 +102,19 @@ Sample output:
 ```console
 Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.1
 ```
+
+# Configure Private DNS Zone
+
+Create a private DNS zone
+e.g.
+- conjur.demo
+![image](images/00-Create-Private-DNS-zone.png)
+
+Add records for Conjur Master and MySQL to point to the IP Address of the utilities host created above
+e.g.
+- master.conjur.demo
+- mysql.conjur.demo
+![image](images/00-Private-DNS-zone.png)
+
+Associate the private DNS with the virtual network created above
+![image](images/00-Add-virtual-network-link.png)
