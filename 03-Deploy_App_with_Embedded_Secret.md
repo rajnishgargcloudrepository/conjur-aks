@@ -65,7 +65,7 @@ cityapp-hardcode-75d696d656-hz7gh   1/1     Running   0          13s
 ```
 2. Verify that pod access to MySQL database
 Get a shell in the CityApp pod and curl to itself
-```
+```console
 kubectl exec -it cityapp-hardcode-75d696d656-hz7gh -- /bin/sh
 curl http://127.0.0.1:3000
 ```
