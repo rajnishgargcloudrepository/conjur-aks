@@ -2,6 +2,7 @@
 We will provision an AKS cluster that will run the following workloads:
 - Conjur Followers
 - Demo Application Containers (cityapp)
+We will also provision an ACR and integrate with the AKS cluster
 
 # Create AKS Cluster
 1.0. Login to your Azure Portal (https://portal.azure.com)
@@ -83,3 +84,28 @@ kubectl get pods -A
 
 Successful configuration of above steps should look something like this:
 ![image](images/01-AKS-Connect.png)
+
+# Create ACR and integrate with AKS
+
+Login to Azure CLI on the utilities host
+```console
+az login
+```
+
+1.0. Create the ACR
+Create a container registry and provide a name for your ACR
+![image](01-Create-container-registry-Basics.png)
+Customize networking and encryption settings as desired, or leave them as default
+
+From the utility host, verify that you are able to login to your ACR
+```console
+az acr login -n <ACR-Name>
+```
+
+2.0. Integrate the ACR with AKS
+
+From the utility host, update the ACR-AKS integration settings
+For more information, read: https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration
+```console
+az aks update -n <AKS-name> -g <RG-name> --attach-acr <ACR-name>
+```
