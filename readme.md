@@ -42,7 +42,10 @@ We will also provision an ACR and integrate with the AKS cluster
 Our sample application uses a MySQL database.
 In later sections, we will demostrate the hardcoded versus secretless connection methods used by the sample application to connect to this MySQL database,
 
-### [Task 3: Setup DataBase Server](03-Setup_DataBase_Server.md)
+### [Task 3: Deploy App with Embedded Secret](03-Deploy_App_with_Embedded_Secret.md)
+Get familiar with AKS by deploying a sample application to the AKS cluster.
+The CityApp application connects to the MySQL database setup in task 03 and displays a random city name in the web application.
+The MySQL database credentials specified in task 03 will be embedded in the kubernetes deployment configuration file.
 
 ### [Task 4: Deploy App with Embedded Secret](04-Deploy_App_with_Embedded_Secret.md)
 
