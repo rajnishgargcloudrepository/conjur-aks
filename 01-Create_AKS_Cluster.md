@@ -38,16 +38,18 @@ Review the settings and create the Kubernetes cluster.
 
 2.0. Install Azure CLI
 
+Read more about Azure CLI: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
+
 ```console
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-Read more about Azure CLI: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
 3.0. Configure credentials to login to AKS cluster
 
-Login using Azure CLI
 Read more about Azure CLI authentication: https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli
+
+Login using Azure CLI
 ```console
 az login
 ```
