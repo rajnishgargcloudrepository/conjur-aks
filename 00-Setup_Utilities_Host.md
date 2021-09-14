@@ -5,7 +5,7 @@ An Azure VM is required as an utilities host serving the following functions:
 - Docker host for MySQL database container
 We will also configure the Private DNS zone for name resolution here
 
-# Provision Utilities Host
+## Provision Utilities Host
 1.0. Login to your Azure Portal (https://portal.azure.com)
 
 2.0. Setup Azure Environment
@@ -62,7 +62,7 @@ Add tags as desired for your new resource group
 
 ![image](images/00-Create-a-virtual-machine-PuTTY.png)
 
-# Setup Docker on Utilities Host
+## Setup Docker on Utilities Host
 The utilities host will be used to run the Conjur and MySQL containers.
 
 1.0. Install docker on the utilities host
@@ -103,7 +103,7 @@ Sample output:
 Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.1
 ```
 
-# Configure Private DNS Zone
+## Configure Private DNS Zone
 
 Create a private DNS zone
 e.g.
