@@ -47,7 +47,7 @@ Get familiar with AKS by deploying a sample application to the AKS cluster.
 The CityApp application connects to the MySQL database setup in task 03 and displays a random city name in the web application.
 The MySQL database credentials specified in task 03 will be embedded in the kubernetes deployment configuration file.
 
-### [Task 4: Deploy App with Embedded Secret](04-Deploy_App_with_Embedded_Secret.md)
+### [Task 4: Setup Conjur Master Server](04-Setup_Conjur_Master_Server.md)
 
 ### [Task 5: Setup Conjur Master Server](05-Setup_Conjur_Master.md)
 
