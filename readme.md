@@ -36,6 +36,7 @@ We will also configure the Private DNS zone for name resolution here
 We will provision an AKS cluster that will run the following workloads:
 - Conjur Followers
 - Demo Application Containers (cityapp)
+We will also provision an ACR and integrate with the AKS cluster
 
 ### [Task 2: Setup MySQL Database](02-Setup-MySQL-Database.md)
 Our sample application uses a MySQL database.
