@@ -39,7 +39,6 @@ Review the settings and create the Kubernetes cluster.
 2.0. Install Azure CLI
 
 Read more about Azure CLI: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
-
 ```console
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
@@ -47,9 +46,9 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 3.0. Configure credentials to login to AKS cluster
 
-Read more about Azure CLI authentication: https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli
-
 Login using Azure CLI
+
+Read more about Azure CLI authentication: https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli
 ```console
 az login
 ```
@@ -63,7 +62,6 @@ az aks get-credentials --resource-group <Resource-Group-Name> --name <AKS-Cluste
 4.0. Install kubectl
 
 Read more about installing kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
 ```console
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
@@ -82,4 +80,6 @@ kubectl version --client
 ```console
 kubectl get pods -A
 ```
+
+Successful configuration of above steps should look something like this:
 ![image](images/01-AKS-Connect.png)
