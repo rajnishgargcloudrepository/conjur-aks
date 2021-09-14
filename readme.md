@@ -31,9 +31,9 @@ For more detail about CyberArk Conjur Secrets Manager, please visit the two webs
 
 ### [Task 0: Setup Utilities Host](00-Setup_Utilities_Host.md)
 
-### [Task 1: Install Necessary Software in Jump Host](01-Install_Necessary_Software.md)
+### [Task 1: Create AKS Cluster](01-Create_AKS_Cluster.md)
 
-### [Task 2: Create EKS Cluster](02-Create_EKS_Cluster.md)
+### [Task 2: Placeholder](02-Create_EKS_Cluster.md)
 
 ### [Task 3: Setup DataBase Server](03-Setup_DataBase_Server.md)
 
