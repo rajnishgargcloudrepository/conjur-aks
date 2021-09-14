@@ -94,7 +94,7 @@ az login
 
 1.0. Create the ACR
 Create a container registry and provide a name for your ACR
-![image](01-Create-container-registry-Basics.png)
+![image](images/01-Create-container-registry-Basics.png)
 Customize networking and encryption settings as desired, or leave them as default
 
 From the utility host, verify that you are able to login to your ACR
