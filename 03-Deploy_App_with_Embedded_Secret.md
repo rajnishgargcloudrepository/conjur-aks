@@ -19,7 +19,7 @@ cd build
 ```console
 docker images
 ```
-Output Example
+Sample output:
 ```console
 REPOSITORY                         TAG       IMAGE ID       CREATED         SIZE
 cityapp                            1.0       f157c356faf4   2 minutes ago   294MB
