@@ -108,16 +108,13 @@ Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.1
 Create a private DNS zone
 e.g.
 - conjur.demo
-- 
 ![image](images/00-Create-Private-DNS-zone.png)
 
 Add records for Conjur Master and MySQL to point to the IP Address of the utilities host created above
 e.g.
 - master.conjur.demo
 - mysql.conjur.demo
-- 
 ![image](images/00-Private-DNS-zone.png)
 
 Associate the private DNS with the virtual network created above
-
 ![image](images/00-Add-virtual-network-link.png)
