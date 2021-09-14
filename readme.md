@@ -24,16 +24,21 @@ For more detail about CyberArk Conjur Secrets Manager, please visit the two webs
 ![Architecture](https://github.com/ivanckleecity/CyberArk-DAP-EKS-Lap-2021/blob/main/images/architecture_eks.JPG)
 
 ## Lab Guide
-- Task 0 to 1 is to create AWS envirunment to run the Jump Host
-- Task 2 to 4 is to create an EKS envirunment to run contrainer application to access an external Database. The External Database will be seating in your Jump Host
-- Task 5 to 8 is to setup CyberArk Conjur Secrets Manager to protect containerized applications and DevOps tools secure access to resources. The lab will show case how to setup and use CyberArk Summon and Secretless Broker 
-
 
 ### [Task 0: Setup Utilities Host](00-Setup_Utilities_Host.md)
+An Azure VM is required as an utilities host serving the following functions:
+- Jump host to access the AKS environment
+- Docker host for Conjur Master container
+- Docker host for MySQL database container
 
 ### [Task 1: Create AKS Cluster](01-Create_AKS_Cluster.md)
+We will provision an AKS cluster that will run the following workloads:
+- Conjur Followers
+- Demo Application Containers (cityapp)
 
-### [Task 2: Placeholder](02-Create_EKS_Cluster.md)
+### [Task 2: Setup MySQL Database](02-Setup-MySQL-Database.md)
+Our sample application uses a MySQL database.
+In later sections, we will demostrate the hardcoded versus secretless connection methods used by the sample application to connect to this MySQL database,
 
 ### [Task 3: Setup DataBase Server](03-Setup_DataBase_Server.md)
 
