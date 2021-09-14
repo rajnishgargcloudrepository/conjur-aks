@@ -87,18 +87,15 @@ Successful configuration of above steps should look something like this:
 
 # Create ACR and integrate with AKS
 
-Login to Azure CLI on the utilities host
-```console
-az login
-```
-
 1.0. Create the ACR
+
 Create a container registry and provide a name for your ACR
 ![image](images/01-Create-container-registry-Basics.png)
 Customize networking and encryption settings as desired, or leave them as default
 
 From the utility host, verify that you are able to login to your ACR
 ```console
+az login
 az acr login -n <ACR-Name>
 ```
 
@@ -107,5 +104,6 @@ az acr login -n <ACR-Name>
 From the utility host, update the ACR-AKS integration settings
 For more information, read: https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration
 ```console
+az login
 az aks update -n <AKS-name> -g <RG-name> --attach-acr <ACR-name>
 ```
