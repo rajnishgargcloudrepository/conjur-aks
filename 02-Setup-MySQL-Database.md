@@ -1,6 +1,6 @@
 # Objectives
 Our sample application uses a MySQL database.
-In later sections, we will demostrate the hardcoded versus secretless connection methods used by the sample application to connect to this MySQL database,
+In later sections, we will demostrate the hardcoded versus secretless connection methods used by the sample application to connect to this MySQL database.
 
 # Setup the MySQL Database
 
