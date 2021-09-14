@@ -30,6 +30,7 @@ An Azure VM is required as an utilities host serving the following functions:
 - Jump host to access the AKS environment
 - Docker host for Conjur Master container
 - Docker host for MySQL database container
+We will also configure the Private DNS zone for name resolution here
 
 ### [Task 1: Create AKS Cluster](01-Create_AKS_Cluster.md)
 We will provision an AKS cluster that will run the following workloads:
