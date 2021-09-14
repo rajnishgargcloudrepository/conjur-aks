@@ -1,10 +1,10 @@
 # Objectives
 An Azure VM is required as an utilities host serving the following functions:
 - Jump host to access the AKS environment
-- Docker host to run the Conjur master container
-- MySQL database server
+- Docker host for Conjur Master container
+- Docker host for MySQL database container
 
-# Install Utilities Host
+# Provision Utilities Host
 1.0. Login to your Azure Portal (https://portal.azure.com)
 
 2.0. Setup Azure Environment
@@ -60,3 +60,44 @@ Add tags as desired for your new resource group
 3.5. Verify access to the Azure VM
 
 ![image](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/images/00-Create-a-virtual-machine-PuTTY.png)
+
+# Setup Docker CE on Utilities Host
+The utilities host will be used to run the Conjur and MySQL containers.
+
+1.0. Install docker on the utilities host
+```console
+sudo apt-get -y install docker.io
+```
+
+1.1. Verify that docker is running and enabled
+```console
+systemctl status docker
+```
+Sample output:
+```console
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2021-09-14 03:29:49 UTC; 18s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 11694 (dockerd)
+      Tasks: 10
+     Memory: 44.9M
+     CGroup: /system.slice/docker.service
+             └─11694 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+```
+
+2.0. Allow user to run docker without sudo
+```console
+sudo usermod -aG docker azureuser
+newgrp docker
+```
+
+2.1. Verify docker installation
+```console
+docker --version
+```
+Sample output:
+```console
+Docker version 20.10.7, build 20.10.7-0ubuntu1~20.04.1
+```
