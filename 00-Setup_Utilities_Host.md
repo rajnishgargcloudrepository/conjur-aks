@@ -4,7 +4,7 @@ An Azure VM is required as an utilities host serving the following functions:
 - Docker host to run the Conjur master container
 - MySQL database server
 
-## Install Jump Host.
+## Install Utilities Host
 1.0. Login to your Azure Portal (https://portal.azure.com)
 
 2.0. Setup Azure Environment
