@@ -2,7 +2,7 @@
 Our sample application uses a MySQL database.
 In later sections, we will demostrate the hardcoded versus secretless connection methods used by the sample application to connect to this MySQL database.
 
-# Setup the MySQL Database
+## Setup the MySQL Database
 
 We have provisioned the utilities host and setup Docker in task 0
 
