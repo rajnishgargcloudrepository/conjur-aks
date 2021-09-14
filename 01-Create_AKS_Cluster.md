@@ -33,7 +33,7 @@ We will also provision an ACR and integrate with the AKS cluster
 
 Review the settings and create the Kubernetes cluster.
 
-# Connect to the AKS Cluster
+## Connect to the AKS Cluster
 
 1.0. Login to the utilities host created in task 0
 
