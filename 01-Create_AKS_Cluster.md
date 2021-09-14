@@ -4,7 +4,7 @@ We will provision an AKS cluster that will run the following workloads:
 - Demo Application Containers (cityapp)
 We will also provision an ACR and integrate with the AKS cluster
 
-# Create AKS Cluster
+## Create AKS Cluster
 1.0. Login to your Azure Portal (https://portal.azure.com)
 
 2.0. Create the Kubernetes Cluster
@@ -85,7 +85,7 @@ kubectl get pods -A
 Successful configuration of above steps should look something like this:
 ![image](images/01-AKS-Connect.png)
 
-# Create ACR and integrate with AKS
+## Create ACR and integrate with AKS
 
 1.0. Create the ACR
 
