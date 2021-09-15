@@ -1,0 +1,15 @@
+- !policy
+  id: world_db
+  body:
+  - &init-variables
+    - !variable username
+    - !variable password
+  - !group consumers
+  - !permit
+    role: !group consumers
+    privilege: [ read, execute ]
+    resources: *init-variables
+- !grant
+  role: !group world_db/consumers
+  members:
+  - !layer k8s-apps/default
