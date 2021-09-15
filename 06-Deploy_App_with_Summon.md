@@ -71,7 +71,7 @@ follower-6b5d667865-bqggw              1/1     Running   0          54m
 ```
 2. Use curl to verify the random city
 ```
-CITYAPP_SUMMON_POD_NAME="$(kubectl get pods -c cityapp -n cityapp | grep cityapp-summon-init | head -n1 | awk '{print $1}')"
+CITYAPP_SUMMON_POD_NAME="$(kubectl get pods -n cityapp | grep cityapp-summon-init | head -n1 | awk '{print $1}')"
 kubectl exec -it $CITYAPP_SUMMON_POD_NAME -n cityapp -- curl http://127.0.0.1:3000
 ```
 Sample output:
