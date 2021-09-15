@@ -48,8 +48,9 @@ The CityApp application connects to the MySQL database setup in task 03 and disp
 The MySQL database credentials specified in task 03 will be embedded in the kubernetes deployment configuration file.
 
 ### [Task 4: Setup Conjur Master Server](04-Setup_Conjur_Master_Server.md)
+Setup the CyberArk Conjur Master server in utilities host
 
-### [Task 5: Setup Conjur Master Server](05-Setup_Conjur_Master.md)
+### [Task 5: Deploy Follower with Seed Fetcher](06-Deploy_Follower_with_Seed_Fetcher.md)
 
 ### [Task 6: Deploy Follower with Seed Fetcher](06-Deploy_Follower_with_Seed_Fetcher.md)
 
