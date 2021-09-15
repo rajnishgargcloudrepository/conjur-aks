@@ -8,7 +8,7 @@ Conjur uses certificates for communication between the Master, Standby, and foll
 To understand Conjur certificate architecture, read: https://docs.cyberark.com/Product-Doc/OnlineHelp/AAM-DAP/Latest/en/Content/Deployment/HighAvailability/certificate-architecture.htm
 
 This optional step generates a self-signed CA, and uses the self-signed CA to sign the Conjur Master and followers certificates.
-You may also proceed with the tasks using the sample certificates provided ![here](https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task04/conjur-certificates.tgz)
+You may also proceed with the tasks using the sample certificates provided [here](https://github.com/rajnishgargcloudrepository/conjur-aks/blob/main/task04/conjur-certificates.tgz)
 
 1.0 Generate a self-signed certificate authority
 - Generate private key of the self-signed certificate authority
