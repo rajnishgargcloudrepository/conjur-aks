@@ -48,11 +48,19 @@ e is 65537 (0x010001)
 ```
 - Create certificate signing request for the Conjur Master certificate
 ```console
-openssl req -new -key master.conjur.demo.key -subj "/CN=master.conjur.demo" -addext "subjectAltName = DNS:master.conjur.demo" -out master.conjur.demo.csr
+openssl req -new -key master.conjur.demo.key -subj "/CN=master.conjur.demo" -out master.conjur.demo.csr
+```
+- Create OpenSSL configuration file to add subject alternative name
+```console
+cat << EOF >> master.conjur.demo-openssl.cnf
+subjectAltName = @alternate_names
+[ alternate_names ]
+DNS.1 = master.conjur.demo
+EOF
 ```
 - Generate certificate of the Conjur Master certificate
 ```console
-azureuser@VM-ConjurDemoAKS:~$ openssl x509 -req -in master.conjur.demo.csr -CA ConjurDemoCA.pem -CAkey ConjurDemoCA.key -CAcreateserial -days 365 -sha256 -out master.conjur.demo.pem
+azureuser@VM-ConjurDemoAKS:~$ openssl x509 -req -in master.conjur.demo.csr -CA ConjurDemoCA.pem -CAkey ConjurDemoCA.key -CAcreateserial -days 365 -sha256 -out master.conjur.demo.pem -extfile master.conjur.demo-openssl.cnf
 Signature ok
 subject=CN = master.conjur.demo
 Getting CA Private Key
@@ -68,11 +76,19 @@ e is 65537 (0x010001)
 ```
 - Create certificate signing request for the Conjur Followers certificate
 ```console
-openssl req -new -key followers.default.svc.cluster.local.key -subj "/CN=followers.default.svc.cluster.local" -addext "subjectAltName = DNS:followers.default.svc.cluster.local" -out followers.default.svc.cluster.local.csr
+openssl req -new -key followers.default.svc.cluster.local.key -subj "/CN=followers.default.svc.cluster.local" -out followers.default.svc.cluster.local.csr
+```
+- Create OpenSSL configuration file to add subject alternative name
+```console
+cat << EOF >> followers.default.svc.cluster.local-openssl.cnf
+subjectAltName = @alternate_names
+[ alternate_names ]
+DNS.1 = followers.default.svc.cluster.local
+EOF
 ```
 - Generate certificate of the Conjur Followers certificate
 ```console
-azureuser@VM-ConjurDemoAKS:~$ openssl x509 -req -in followers.default.svc.cluster.local.csr -CA ConjurDemoCA.pem -CAkey ConjurDemoCA.key -CAcreateserial -days 365 -sha256 -out followers.default.svc.cluster.local.pem
+azureuser@VM-ConjurDemoAKS:~$ openssl x509 -req -in followers.default.svc.cluster.local.csr -CA ConjurDemoCA.pem -CAkey ConjurDemoCA.key -CAcreateserial -days 365 -sha256 -out followers.default.svc.cluster.local.pem -extfile followers.default.svc.cluster.local-openssl.cnf
 Signature ok
 subject=CN = followers.default.svc.cluster.local
 Getting CA Private Key
