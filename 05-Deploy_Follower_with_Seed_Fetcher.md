@@ -8,7 +8,7 @@ This allows self-healing and auto scaling of follower pods.
 
 We will also enable k8s authenicator to support the following labs.
 
-## 1 Push the Conjur container images to ACR
+## 1. Push the Conjur container images to ACR
 
 We need to upload the container images to ACR so that it can be used by AKS
 ```console
@@ -19,7 +19,7 @@ docker push <ACR-name>.azurecr.io/conjur-appliance:12.2.0
 docker push <ACR-name>.azurecr.io/dap-seedfetcher:0.2.0
 ```
 
-## 2 Create follower namespace and service account
+## 2. Create follower namespace and service account
 1. Log in to the utilities host
 ```console
 kubectl create namespace conjur
@@ -28,7 +28,7 @@ kubectl create namespace conjur
 ```console
 kubectl create serviceaccount conjur-cluster -n conjur
 ```
-## 3 Load Conjur policies
+## 3. Load Conjur policies
 1. Download authn-k8s-cluster.yaml. Please review the conjur policy file authn-k8s-cluster.yaml and make necessary changes if your environment is different to this lab before loading it to conjur
 ```console
 wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/authn-k8s.yaml
@@ -50,3 +50,16 @@ azureuser@VM-ConjurDemoAKS:~$ conjur policy load -f authn-k8s.yaml -b root
     "version": 1
 }
 ```
+### 4. Initialize Conjur internal CA
+1. Initialize the Conjur internal CA that will be used for the kubernetes authenticator
+```console
+docker exec conjur-appliance chpst -u conjur conjur-plugin-service possum rake authn_k8s:ca_init["conjur/authn-k8s/aks"]
+```
+Sample output:
+```console
+Populated CA and Key of service conjur/authn-k8s/aks
+To print values:
+ conjur variable value conjur/authn-k8s/aks/ca/cert
+ conjur variable value conjur/authn-k8s/aks/ca/key
+```
+2. Access Conjur Master UI and verify that `conjur/authn-k8s/aks/ca/cert` and `conjur/authn-k8s/aks/ca/key` have value not blank
