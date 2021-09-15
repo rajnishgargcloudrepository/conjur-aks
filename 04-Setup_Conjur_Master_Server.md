@@ -140,7 +140,7 @@ Configuration successful. Conjur master up and running.
 cd /tmp
 tar xvf conjur-certificates.tgz
 evoke ca import --root ConjurDemoCA.pem
-evoke ca import --key followers.default.svc.cluster.local.key followers.default.svc.cluster.local.pem
+evoke ca import --key follower.default.svc.cluster.local.key follower.default.svc.cluster.local.pem
 evoke ca import --key master.conjur.demo.key --set master.conjur.demo.pem
 ```
 Sample output:
