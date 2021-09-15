@@ -141,3 +141,15 @@ wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/fo
 ```console
 kubectl apply -f follower-with-seedfetcher.yaml -n conjur
 ```
+Sample output:
+```console
+azureuser@VM-ConjurDemoAKS:~$ kubectl apply -f follower-with-seedfetcher.yaml
+service/follower created
+deployment.apps/follower created
+```
+4. Verify that the pods are running
+```console
+azureuser@VM-ConjurDemoAKS:~$ kubectl get pods -n conjur
+NAME                                READY   STATUS    RESTARTS   AGE
+follower-6b5d667865-bqggw           1/1     Running   0          2m6s
+```
