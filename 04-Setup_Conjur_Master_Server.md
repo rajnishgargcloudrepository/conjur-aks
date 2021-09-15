@@ -40,11 +40,7 @@ Email Address []:joe.tan@cyberark.com
 2.0 Generate certificate for Conjur Master
 - Generate private key of the Conjur Master certificate
 ```console
-azureuser@VM-ConjurDemoAKS:~$ openssl genrsa -out master.conjur.demo.key 2048
-Generating RSA private key, 2048 bit long modulus (2 primes)
-............+++++
-..........................................................................+++++
-e is 65537 (0x010001)
+openssl genrsa -out master.conjur.demo.key 2048
 ```
 - Create certificate signing request for the Conjur Master certificate
 ```console
@@ -61,11 +57,7 @@ openssl x509 -req -in master.conjur.demo.csr -CA ConjurDemoCA.pem -CAkey ConjurD
 3.0 Generate certificate for Conjur Followers
 - Generate private key of the Conjur Followers certificate
 ```console
-azureuser@VM-ConjurDemoAKS:~$ openssl genrsa -out followers.default.svc.cluster.local.key 2048
-Generating RSA private key, 2048 bit long modulus (2 primes)
-.........................................................................+++++
-...................................................................................+++++
-e is 65537 (0x010001)
+openssl genrsa -out followers.default.svc.cluster.local.key 2048
 ```
 - Create certificate signing request for the Conjur Followers certificate
 ```console
