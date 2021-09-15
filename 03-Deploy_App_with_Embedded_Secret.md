@@ -38,13 +38,14 @@ Create a namespace to run all the CityApp deployments
 kubectl create namespace cityapp
 ```
 ## Deploy CityApp (embedded credentials) to AKS cluster
-Download the CityApp Kubernetes configuration file
+- Download the CityApp Kubernetes configuration file
 ```console
 wget https://raw.githubusercontent.com/rajnishgargcloudrepository/conjur-aks/main/task03/cityapp-harcode.yaml
 ```
-Create the CityApp (embedded credentials) deployment in AKS cluster
+- Update the `<ACR-name>` in the Kubernetes manifest file before applying.
+- Create the CityApp (embedded credentials) deployment in AKS cluster
 ```console
-kubectl apply -f cityapp-hardcode.yaml
+kubectl apply -f cityapp-hardcode.yaml -n cityapp
 ```
 Sample output:
 ```console
