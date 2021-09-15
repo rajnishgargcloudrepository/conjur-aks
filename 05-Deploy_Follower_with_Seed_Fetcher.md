@@ -153,3 +153,30 @@ azureuser@VM-ConjurDemoAKS:~$ kubectl get pods -n conjur
 NAME                                READY   STATUS    RESTARTS   AGE
 follower-6b5d667865-bqggw           1/1     Running   0          2m6s
 ```
+5. Verify that follower replication is healthy
+```console
+curl -k https://master.conjur.demo/health
+```
+Sample output:
+```console
+    "replication_status": {
+      "pg_stat_replication": [
+        {
+          "usename": "follower.default.svc.cluster.local",
+          "application_name": "follower_follower_default_svc_cluster_local_follower_6b5",
+          "client_addr": "10.240.0.4",
+          "backend_start": "2021-09-15 05:51:09 +0000",
+          "state": "streaming",
+          "sent_lsn": "0/3000060",
+          "replay_lsn": "0/3000060",
+          "sync_priority": 0,
+          "sync_state": "async",
+          "sent_lsn_bytes": 50331744,
+          "replay_lsn_bytes": 50331744,
+          "replication_lag_bytes": 0
+        }
+      ],
+      "pg_current_xlog_location": "0/3000060",
+      "pg_current_xlog_location_bytes": 50331744
+    }
+```
