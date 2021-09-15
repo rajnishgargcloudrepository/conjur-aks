@@ -131,7 +131,7 @@ openssl s_client -showcerts -connect master.conjur.demo:443 </dev/null 2>/dev/nu
 kubectl create configmap master-certificate --from-file=ssl-certificate=<(cat master-certificate.pem)
 ```
 ## 9. Deploy the Follower with seedfetcher
-1. Download follower-with-seedfetcher.yaml.
+1. Download the follower-with-seedfetcher.yaml manifest file
 - Please review the kubernetes manifest file and make necessary changes if your environment is different to this lab before loading it to AKS
 ```console
 wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/follower-with-seedfetcher.yaml
