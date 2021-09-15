@@ -53,3 +53,5 @@ For more detail about CyberArk Conjur Secrets Manager, please visit the two webs
 - We will secure the CityApp by using Summon to inject secrets into environment variables.
 - The Summon container image is included in the CityApp pod as an init container.
 ### [Task 7: Deploy App with CyberArk Secretless Broker](07-Deploy_App_with_Secretless.md)
+- We will secure the CityApp by using Secretless Broker
+- To get a better understanding of Secretless Broker, please review [Secretless Broker online doc](https://secretless.io/)
