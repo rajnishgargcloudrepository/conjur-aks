@@ -213,6 +213,18 @@ Configuration written to /home/azureuser/.conjurrc
 Successfully initialized the Conjur CLI
 To start using the Conjur CLI, log in to the Conjur server by running `conjur login`
 ```
+- Login using Conjur CLI
+```console
+conjur login
+```
+Sample output:
+```console
+azureuser@VM-ConjurDemoAKS:~$ conjur login
+Enter your username: admin
+Enter your password or API key (this will not be echoed):
+WARNING: No supported keystore found! Saving credentials in plaintext in '/home/azureuser/.netrc'. Make sure to logoff after you have finished using the CLI
+Successfully logged in to Conjur
+```
 ### 1.4 Access to Conjur web UI
 1. Add an inbound rule in the Azure Network Security Group to allow inbound HTTPS connection
 2. Access the Conjur web UI using the utilities host public IP address
