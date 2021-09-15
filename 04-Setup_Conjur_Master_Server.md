@@ -129,7 +129,7 @@ docker exec -it conjur-appliance /bin/sh
 ```
 - Initialize the Conjur Master
 ```console
-evoke configure master --accept-eula -h master.conjur.demo --master-altnames "master.conjur.demo" -p CyberArk123! cyberark
+evoke configure master --accept-eula -h master.conjur.demo --master-altnames "master.conjur.demo" -p <very-secure-password> cyberark
 ```
 Sample output:
 ```console
@@ -191,7 +191,33 @@ tar xvf conjur-cli-rhel-8.tar.gz
 mv conjur /usr/bin
 chmod +x /usr/bin/conjur
 ```
-- Verify Conjur CLI execution
+- Initialize Conjur CLI connection to Conjur Master
 ```console
-conjur --version
+conjur init -u https://master.conjur.demo
 ```
+Sample output:
+```console
+azureuser@VM-ConjurDemoAKS:~$ conjur init -u https://master.conjur.demo
+
+The Conjur server's certificate SHA-1 fingerprint is:
+34:27:C3:A9:BE:D7:73:8F:F2:15:A6:02:83:E2:D4:5C:00:A2:6D:1F
+
+To verify this certificate, we recommend running the following command on the Conjur server:
+openssl x509 -fingerprint -noout -in ~conjur/etc/ssl/conjur.pem
+
+Trust this certificate? yes/no (Default: no): yes
+Certificate written to /home/azureuser/conjur-server.pem
+
+Configuration written to /home/azureuser/.conjurrc
+
+Successfully initialized the Conjur CLI
+To start using the Conjur CLI, log in to the Conjur server by running `conjur login`
+```
+### 1.4 Access to Conjur web UI
+1. Add an inbound rule in the Azure Network Security Group to allow inbound HTTPS connection
+2. Access the Conjur web UI using the utilities host public IP address
+3. Login as admin using the password configured in step 3 of section 1.2
+- Conjur Login UI
+![image](images/04-Conjur-Login-UI.png)
+- Conjur Master UI
+![image](images/04-Conjur-Master-UI.png)
