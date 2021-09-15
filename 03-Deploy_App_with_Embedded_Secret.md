@@ -68,11 +68,11 @@ cityapp-hardcode-75d696d656-hz7gh   1/1     Running   0          13s
 Get a shell in the CityApp pod and curl to itself
 ```console
 CITYAPP_HARDCODE_POD_NAME="$(kubectl get pods -n cityapp | grep cityapp-hardcode | head -n1 | awk '{print $1}')"
-kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -n cityapp -- curl -k http://127.0.0.1:3000
+kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -n cityapp -- curl http://127.0.0.1:3000
 ```
 Sample output:
 ```console
-azureuser@VM-ConjurDemoAKS:~$ kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -n cityapp -- curl -k http://127.0.0.1:3000
+azureuser@VM-ConjurDemoAKS:~$ kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -n cityapp -- curl http://127.0.0.1:3000
 <title> Random World Cities! </title>
 <br><br>
 <p style="font-size:30px"><b>Kofu</b> is a city in Yamanashi, Japan with a population of 199753
