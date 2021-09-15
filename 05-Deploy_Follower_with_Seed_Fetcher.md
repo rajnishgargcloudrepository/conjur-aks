@@ -29,7 +29,7 @@ kubectl create namespace conjur
 kubectl create serviceaccount conjur-cluster -n conjur
 ```
 ## 3. Load Conjur policies
-1. Download authn-k8s-cluster.yaml. Please review the conjur policy file authn-k8s-cluster.yaml and make necessary changes if your environment is different to this lab before loading it to conjur
+1. Download authn-k8s-cluster.yaml. Please review the conjur policy file and make necessary changes if your environment is different to this lab before loading it to conjur
 ```console
 wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/authn-k8s.yaml
 ```
@@ -50,8 +50,8 @@ azureuser@VM-ConjurDemoAKS:~$ conjur policy load -f authn-k8s.yaml -b root
     "version": 1
 }
 ```
-### 4. Initialize Conjur internal CA
-1. Initialize the Conjur internal CA that will be used for the kubernetes authenticator
+## 4. Initialize Conjur internal CA
+1. Initialize the Conjur internal CA that will be used for the Kubernetes authenticator
 ```console
 docker exec conjur-appliance chpst -u conjur conjur-plugin-service possum rake authn_k8s:ca_init["conjur/authn-k8s/aks"]
 ```
@@ -62,4 +62,33 @@ To print values:
  conjur variable value conjur/authn-k8s/aks/ca/cert
  conjur variable value conjur/authn-k8s/aks/ca/key
 ```
-2. Access Conjur Master UI and verify that `conjur/authn-k8s/aks/ca/cert` and `conjur/authn-k8s/aks/ca/key` have value not blank
+2. Access Conjur Master UI and verify that `conjur/authn-k8s/aks/ca/cert` and `conjur/authn-k8s/aks/ca/key` are populated with the certificate and key values
+## 5. Enable Kubernetes authenticator on Conjur Master
+1. Add `CONJUR_AUTHENTICATORS="authn,authn-k8s/okd"` to `/opt/conjur/etc/conjur.conf` in Conjur container
+```console
+docker exec conjur-appliance sed -i -e '$aCONJUR_AUTHENTICATORS="authn,authn-k8s/aks"' /opt/conjur/etc/conjur.conf
+```
+2. Restart conjur service to apply this change.
+```console
+docker exec conjur-appliance sv restart conjur
+```
+3. Verify that okd authenticator is now enabled on Master
+```console
+curl -k https://master.conjur.demo/info
+```
+Sample output:
+```console
+    "enabled": [
+      "authn",
+      "authn-k8s/aks"
+    ]
+```
+## 6. Create cluster role and role binding for conjur-cluster service account
+1. Download conjur-authenticator-permissions.yaml. Please review the role binding file and make necessary changes if your environment is different to this lab before loading it to AKS
+```console
+wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/conjur-authenticator-permissions.yaml
+```
+2. Use kubectl to apply it.
+```console
+kubectl apply -f conjur-authenticator-permissions.yaml
+```
