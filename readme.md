@@ -52,8 +52,4 @@ For more detail about CyberArk Conjur Secrets Manager, please visit the two webs
 ### [Task 6: Deploy App with CyberArk Summon Secrets Injection](06-Deploy_App_with_Summon.md)
 - We will secure the CityApp by using Summon to inject secrets into environment variables.
 - The Summon container image is included in the CityApp pod as an init container.
-### [Task 7: Deploy App to EKS Cluster with CyberArk Summon Secrets Injection](07-Deploy_App_with_Summon_Secrets_Injects.md)
-
-### [Task 8: Deploy App to EKS Cluster with CyberArk Secretless Broker](08-Deploy_App_with_Cyberark_Secretless_Broker.md)
-
-### [Congratulation!!! Lab Completed](Task09/readme.md)
+### [Task 7: Deploy App with CyberArk Secretless Broker](07-Deploy_App_with_Secretless.md)
