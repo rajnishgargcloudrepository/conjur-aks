@@ -29,7 +29,8 @@ kubectl create namespace conjur
 kubectl create serviceaccount conjur-cluster -n conjur
 ```
 ## 3. Load Conjur policies
-1. Download authn-k8s-cluster.yaml. Please review the conjur policy file and make necessary changes if your environment is different to this lab before loading it to conjur
+1. Download authn-k8s-cluster.yaml
+- Please review the conjur policy file and make necessary changes if your environment is different to this lab before loading it to conjur
 ```console
 wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/authn-k8s.yaml
 ```
@@ -84,11 +85,59 @@ Sample output:
     ]
 ```
 ## 6. Create cluster role and role binding for conjur-cluster service account
-1. Download conjur-authenticator-permissions.yaml. Please review the role binding file and make necessary changes if your environment is different to this lab before loading it to AKS
+1. Download conjur-authenticator-permissions.yaml
+- Please review the role binding file and make necessary changes if your environment is different to this lab before loading it to AKS
 ```console
 wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/conjur-authenticator-permissions.yaml
 ```
-2. Use kubectl to apply it.
+2. Apply the Kubernetes manifest file with kubectl
 ```console
 kubectl apply -f conjur-authenticator-permissions.yaml
+```
+## 7. Configure AKS cluster API details in Conjur
+- Retrieve the AKS cluster API details
+```console
+TOKEN_SECRET_NAME="$(kubectl get secrets | grep 'conjur.*service-account-token' | head -n1 | awk '{print $1}')"
+CA_CERT="$(kubectl get secret $TOKEN_SECRET_NAME -o json | jq -r '.data["ca.crt"]' | base64 --decode)"
+SERVICE_ACCOUNT_TOKEN="$(kubectl get secret $TOKEN_SECRET_NAME -o json | jq -r .data.token | base64 --decode)"
+API_URL="$(kubectl config view --minify -o json | jq -r '.clusters[0].cluster.server')"
+```
+- Verify the values of the environment variables
+```console
+echo $TOKEN_SECRET_NAME
+echo $CA_CERT
+echo $SERVICE_ACCOUNT_TOKEN
+echo $API_URL
+```
+- Load the values to Conjur variables
+```console
+conjur variable set -i conjur/authn-k8s/aks/kubernetes/ca-cert -v "$CA_CERT"
+conjur variable set -i conjur/authn-k8s/aks/kubernetes/service-account-token -v "$SERVICE_ACCOUNT_TOKEN"
+conjur variable set -i conjur/authn-k8s/aks/kubernetes/api-url -v "$API_URL"
+```
+Sample output:
+```console
+azureuser@VM-ConjurDemoAKS:~$ conjur variable set -i conjur/authn-k8s/aks/kubernetes/ca-cert -v "$CA_CERT"
+Successfully set value for variable 'conjur/authn-k8s/aks/kubernetes/ca-cert'
+azureuser@VM-ConjurDemoAKS:~$ conjur variable set -i conjur/authn-k8s/aks/kubernetes/service-account-token -v "$SERVICE_ACCOUNT_TOKEN"
+Successfully set value for variable 'conjur/authn-k8s/aks/kubernetes/service-account-token'
+azureuser@VM-ConjurDemoAKS:~$ conjur variable set -i conjur/authn-k8s/aks/kubernetes/api-url -v "$API_URL"
+Successfully set value for variable 'conjur/authn-k8s/aks/kubernetes/api-url'
+```
+## 8. Add Conjur Master certificate to config map
+The seedfetcher will use ConfigMap value to validate the Conjur Master
+```console
+openssl s_client -showcerts -connect master.conjur.demo:443 </dev/null 2>/dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > master-certificate.pem
+kubectl create configmap master-certificate --from-file=ssl-certificate=<(cat master-certificate.pem)
+```
+## 9. Deploy the Follower with seedfetcher
+1. Download follower-with-seedfetcher.yaml.
+- Please review the kubernetes manifest file and make necessary changes if your environment is different to this lab before loading it to AKS
+```console
+wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task05/follower-with-seedfetcher.yaml
+```
+2. Update the `<ACR-name>` in the Kubernetes manifest file before applying
+3. Apply the Kubernetes manifest file with kubectl
+```console
+kubectl apply -f follower-with-seedfetcher.yaml -n conjur
 ```
