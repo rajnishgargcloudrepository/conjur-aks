@@ -36,7 +36,7 @@ spec:
     spec:
       serviceAccountName: cityapp-hardcode
       containers:
-      - image: conjurdemoaks.azurecr.io/cityapp:1.0
+      - image: <ACR-name>.azurecr.io/cityapp:1.0
         imagePullPolicy: IfNotPresent
         name: cityapp
         env:
