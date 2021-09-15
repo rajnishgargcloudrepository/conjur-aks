@@ -52,7 +52,9 @@ Setup the CyberArk Conjur Master server in utilities host
 
 ### [Task 5: Deploy Follower with Seed Fetcher](05-Deploy_Follower_with_Seed_Fetcher.md)
 
-### [Task 6: Deploy Follower with Seed Fetcher](06-Deploy_Follower_with_Seed_Fetcher.md)
+### [Task 6: Deploy App with CyberArk Summon Secrets Injection](06-Deploy_App_with_Summon.md)
+We will secure the CityApp by using Summon to inject secrets into environment variables.
+The Summon container image is included in the CityApp pod as an init container.
 
 ### [Task 7: Deploy App to EKS Cluster with CyberArk Summon Secrets Injection](07-Deploy_App_with_Summon_Secrets_Injects.md)
 
