@@ -46,7 +46,7 @@ wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task06/se
 kubectl create configmap cityapp-summon-init-config --from-file=secrets.yaml -n cityapp
 ```
 ## 5. Deploy the CityApp Summon to the AKS Cluster
-1. Download cityapp-summon-init.yaml.
+1. Download the cityapp-summon-init.yaml manifest file
 
 Please review the kubernetes manifest file and make necessary changes if your environment is different to this lab before loading it to AKS
 ```console
