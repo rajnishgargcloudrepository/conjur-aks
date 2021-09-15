@@ -40,7 +40,7 @@ spec:
           medium: Memory
       initContainers:
       - name: authenticator
-        image: conjurdemoaks.azurecr.io/dap-seedfetcher:0.2.0
+        image: <ACR-name>.azurecr.io/dap-seedfetcher:0.2.0
         imagePullPolicy: IfNotPresent
         env:
           - name: CONJUR_SEED_FILE_URL
@@ -83,7 +83,7 @@ spec:
       containers:
       - name: conjur
         command: ["/tmp/seedfile/start-follower.sh"]
-        image: conjurdemoaks.azurecr.io/conjur-appliance:12.2.0
+        image: <ACR-name>.azurecr.io/conjur-appliance:12.2.0
         imagePullPolicy: IfNotPresent
         env:
           - name: CONJUR_AUTHENTICATORS
