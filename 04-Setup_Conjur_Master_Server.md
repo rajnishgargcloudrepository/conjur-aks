@@ -57,19 +57,19 @@ openssl x509 -req -in master.conjur.demo.csr -CA ConjurDemoCA.pem -CAkey ConjurD
 3.0 Generate certificate for Conjur Followers
 - Generate private key of the Conjur Followers certificate
 ```console
-openssl genrsa -out followers.default.svc.cluster.local.key 2048
+openssl genrsa -out follower.default.svc.cluster.local.key 2048
 ```
 - Create certificate signing request for the Conjur Followers certificate
 ```console
-openssl req -new -key followers.default.svc.cluster.local.key -subj "/CN=followers.default.svc.cluster.local" -out followers.default.svc.cluster.local.csr
+openssl req -new -key follower.default.svc.cluster.local.key -subj "/CN=follower.default.svc.cluster.local" -out follower.default.svc.cluster.local.csr
 ```
 - Create OpenSSL configuration file to add subject alternative name
 ```console
-echo "subjectAltName=DNS:followers.default.svc.cluster.local" > followers.default.svc.cluster.local-openssl.cnf
+echo "subjectAltName=DNS:follower.default.svc.cluster.local" > follower.default.svc.cluster.local-openssl.cnf
 ```
 - Generate certificate of the Conjur Followers certificate
 ```console
-openssl x509 -req -in followers.default.svc.cluster.local.csr -CA ConjurDemoCA.pem -CAkey ConjurDemoCA.key -CAcreateserial -days 365 -sha256 -out followers.default.svc.cluster.local.pem -extfile followers.default.svc.cluster.local-openssl.cnf
+openssl x509 -req -in follower.default.svc.cluster.local.csr -CA ConjurDemoCA.pem -CAkey ConjurDemoCA.key -CAcreateserial -days 365 -sha256 -out follower.default.svc.cluster.local.pem -extfile follower.default.svc.cluster.local-openssl.cnf
 ```
 
 ## Setup Conjur Master server
