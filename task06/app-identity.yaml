@@ -1,0 +1,9 @@
+- !policy
+  id: k8s-apps/default
+  body:
+  - !layer
+  - !grant
+    role: !layer
+    members:
+    - !host /conjur/authn-k8s/aks/apps/default/service_account/cityapp-summon-init
+    - !host /conjur/authn-k8s/aks/apps/default/service_account/cityapp-secretless
