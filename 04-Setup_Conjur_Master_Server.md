@@ -53,9 +53,7 @@ openssl req -new -key master.conjur.demo.key -subj "/CN=master.conjur.demo" -out
 - Create OpenSSL configuration file to add subject alternative name
 ```console
 cat << EOF >> master.conjur.demo-openssl.cnf
-subjectAltName = @alternate_names
-[ alternate_names ]
-DNS.1 = master.conjur.demo
+subjectAltName=DNS:master.conjur.demo
 EOF
 ```
 - Generate certificate of the Conjur Master certificate
@@ -81,9 +79,7 @@ openssl req -new -key followers.default.svc.cluster.local.key -subj "/CN=followe
 - Create OpenSSL configuration file to add subject alternative name
 ```console
 cat << EOF >> followers.default.svc.cluster.local-openssl.cnf
-subjectAltName = @alternate_names
-[ alternate_names ]
-DNS.1 = followers.default.svc.cluster.local
+subjectAltName=DNS:followers.default.svc.cluster.local
 EOF
 ```
 - Generate certificate of the Conjur Followers certificate
