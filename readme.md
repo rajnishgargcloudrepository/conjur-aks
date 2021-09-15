@@ -44,16 +44,25 @@ In later sections, we will demostrate the hardcoded versus secretless connection
 
 ### [Task 3: Deploy App with Embedded Secret](03-Deploy_App_with_Embedded_Secret.md)
 Get familiar with AKS by deploying a sample application to the AKS cluster.
+
 The CityApp application connects to the MySQL database setup in task 03 and displays a random city name in the web application.
+
 The MySQL database credentials specified in task 03 will be embedded in the kubernetes deployment configuration file.
 
 ### [Task 4: Setup Conjur Master Server](04-Setup_Conjur_Master_Server.md)
 Setup the CyberArk Conjur Master server in utilities host
 
 ### [Task 5: Deploy Follower with Seed Fetcher](05-Deploy_Follower_with_Seed_Fetcher.md)
+Deploy Conjur Followers to your AKS Cluster Node.
 
+We will deploy Conjur Followers using seed-fetcher, which automatically authenticate and retrieve seed on pod start-up.
+
+This allows self-healing and auto scaling of follower pods.
+
+We will also enable k8s authenicator to support the following labs.
 ### [Task 6: Deploy App with CyberArk Summon Secrets Injection](06-Deploy_App_with_Summon.md)
 We will secure the CityApp by using Summon to inject secrets into environment variables.
+
 The Summon container image is included in the CityApp pod as an init container.
 
 ### [Task 7: Deploy App to EKS Cluster with CyberArk Summon Secrets Injection](07-Deploy_App_with_Summon_Secrets_Injects.md)
