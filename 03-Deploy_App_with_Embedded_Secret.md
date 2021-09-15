@@ -72,7 +72,7 @@ kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -n cityapp -- curl -k http://127.0.0
 ```
 Sample output:
 ```console
-azureuser@VM-ConjurDemoAKS:~$ kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -- curl -k http://127.0.0.1:3000
+azureuser@VM-ConjurDemoAKS:~$ kubectl exec -it $CITYAPP_HARDCODE_POD_NAME -n cityapp -- curl -k http://127.0.0.1:3000
 <title> Random World Cities! </title>
 <br><br>
 <p style="font-size:30px"><b>Kofu</b> is a city in Yamanashi, Japan with a population of 199753
