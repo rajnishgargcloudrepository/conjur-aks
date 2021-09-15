@@ -1,4 +1,4 @@
 # Objectives
-We are going to deploy secure applications with CyberArk Secretless Broker.
+We will secure the CityApp by using Secretless Broker
 
-To get a better understanding of CyberArk Secretless Broker, please review [Secretless Broker online doc](https://secretless.io/)
+To get a better understanding of Secretless Broker, please review [Secretless Broker online doc](https://secretless.io/)
