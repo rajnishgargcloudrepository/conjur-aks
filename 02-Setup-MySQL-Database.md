@@ -58,7 +58,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 
 Attach to the container bash shell
 ```console
-docker exec -it mysqldb bash
+docker exec -it mysqldb /bin/sh
 ```
 
 Sample container bash shell:
