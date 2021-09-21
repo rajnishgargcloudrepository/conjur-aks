@@ -8,14 +8,14 @@ The Summon container image is included in the CityApp pod as an init container.
 
 We will load the following Conjur policy files to provision the necessary parameters
 1. `projects-authn.yaml`
-    Creates the `conjur/authn-k8s/aks/apps` policy and creates Summon and Secretless (task 07) authenticators under this policy
+    - Creates the `conjur/authn-k8s/aks/apps` policy and creates Summon and Secretless (task 07) authenticators under this policy
 2. `app-identity.yaml`
-    Creates the `k8s-apps/default` policy and layer
-    The authenticators created in `projects-authn.yaml` is added to the `k8s-apps/default` layer
+    - Creates the `k8s-apps/default` policy and layer
+    - The authenticators created in `projects-authn.yaml` is added to the `k8s-apps/default` layer
 3. `safe-permission.yaml`
-    Creates the `world_db` policy and creates variables `username` and `password`, as well as a group `consumers` under this policy
-    The `world_db/consumers` group is grated read and execute permissions on the variables
-    The `k8s-apps/default` layer created in `app-identity.yaml` is added to the `world_db/consumers` group
+    - Creates the `world_db` policy and creates variables `username` and `password`, as well as a group `consumers` under this policy
+    - The `world_db/consumers` group is granted read and execute permissions on the variables
+    - The `k8s-apps/default` layer created in `app-identity.yaml` is added to the `world_db/consumers` group
 - Download the policy files:
 ```console
 wget https://github.com/rajnishgargcloudrepository/conjur-aks/raw/main/task06/projects-authn.yaml
