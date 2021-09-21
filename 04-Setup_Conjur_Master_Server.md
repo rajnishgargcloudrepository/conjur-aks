@@ -76,8 +76,9 @@ openssl x509 -req -in follower.conjur.svc.cluster.local.csr -CA ConjurDemoCA.pem
 
 ### 1.0 Contact CyberArk to request for Conjur images
 
-**WARNING:** You are legally responsible to ensure that the CyberArk software is for personal use only.
-Unauthorized distribution or usage of CyberArk software is prohibited.
+> **WARNING:** You are legally responsible to ensure that the CyberArk software is for personal use only.
+> 
+> Unauthorized distribution or usage of CyberArk software is prohibited.
 
 You will need the below Conjur images:
 1. conjur-appliance_#.tar.gz
