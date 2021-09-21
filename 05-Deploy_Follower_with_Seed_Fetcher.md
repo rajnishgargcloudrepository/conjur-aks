@@ -8,6 +8,19 @@ This allows self-healing and auto scaling of follower pods.
 
 We will also enable k8s authenicator to support the following labs.
 
+## 0. Contact CyberArk to request for Conjur images
+
+> **WARNING:** You are legally responsible to ensure that the CyberArk software is for personal use only.
+> 
+> Unauthorized distribution or usage of CyberArk software is prohibited.
+
+You will need the below Conjur images:
+1. conjur-appliance_#.tar.gz
+2. dap-seedfetcher_#.tar.gz
+where # is the respective software version number
+
+- This lab guide is based on Conjur version 12.2
+
 ## 1. Push the Conjur container images to ACR
 
 We need to upload the container images to ACR so that it can be used by AKS
